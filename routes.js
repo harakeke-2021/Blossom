@@ -1,25 +1,30 @@
 const express = require('express')
 const router = express.Router()
-
+const db = require('./db')
 
 module.exports = router
 
 //main
 router.get('/', (req, res) => {
-    res.send('home')
+    res.render('home')
       })
+
+//matching results
+router.get('/', (req, res) => {
+    return res.render('results')
+ })
 
 //submit button
 router.post('/', (req, res) => {
-        const body = req.body
-        //
-      })    
-
-//matching results
-router.get('/results', (req, res) => {
+    const rooms = req.body.rooms
     db.getResults(rooms)
-    .then(properties => {
-        res.render('results', properties)
+    .then((results) =>{
+        res.redirect('/results')
     })
-
+    .catch((err) => {
+        if (err) {
+          res.status(500).send('internal error')
+        }
+      })
+  })    
 

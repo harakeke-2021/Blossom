@@ -10,5 +10,6 @@ function getResults(rooms){
     return db('properties')
     .join('occupants', 'properties.occupants_id', 'occupants.id')
     .where('rooms', rooms)
+    .select('rooms')
     console.log(rooms)
 }
