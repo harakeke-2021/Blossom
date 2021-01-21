@@ -6,6 +6,7 @@ exports.up = (knex) => {
     table.string('address')
     table.string('type')
     table.integer('rooms')
+    table.integer('bathrooms')
     table.boolean('garden')
     table.integer('price')
     table.string('image')
