@@ -7,8 +7,13 @@ module.exports = {
 }
 
 function getResults(rooms){
+    console.log(rooms)
     return db('properties')
-    .join('occupants', 'properties.occupants_id', 'occupants.id')
-    .where('rooms', rooms)
-    .select('rooms')
+    .join('occupants', 'properties.occupant_id', 'occupants.id')
+    .where('properties.rooms', rooms)
+    .select()
+    .then(result => {
+        console.log(result)
+    return result
+    })
 }
