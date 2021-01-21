@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 
 //matching results
 router.get('/results', (req, res) => {
-    db.getResults({bathrooms,})
+    db.getResults(rooms)
     .then(properties => {
         res.render('results', properties)
     })
