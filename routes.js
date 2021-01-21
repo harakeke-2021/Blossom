@@ -4,7 +4,7 @@ const db = require('./db')
 
 module.exports = router
 
-//main
+//main page
 router.get('/', (req, res) => {
     res.render('home')
       })
@@ -16,9 +16,10 @@ router.get('/', (req, res) => {
 
 //submit button
 router.post('/', (req, res) => {
-    const rooms = req.body.rooms
+    const rooms = Number(req.body.rooms)
     db.getResults(rooms)
-    .then((results) =>{
+    .then((result) => {
+        console.log(result)
         res.redirect('/results')
     })
     .catch((err) => {
@@ -27,4 +28,9 @@ router.post('/', (req, res) => {
         }
       })
   })    
+
+//results page
+  router.get('/results', (req, res) => {
+    return res.render('results')
+ })
 
