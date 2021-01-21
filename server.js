@@ -7,9 +7,12 @@ const routes = require('./routes')
 server.engine('hbs', hbs({ extname: "hbs"}))
 server.set('view engine', 'hbs')
 server.use(express.urlencoded({ extened: true}))
+server.use(express.static('public'))
 
 // Routes
 
 server.use('/', routes)
+
+
 
 module.exports = server
