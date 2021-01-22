@@ -7,11 +7,13 @@ module.exports = {
     close
 }
 
-function getResults(rooms, db = database){
+function getResults(rooms, bathrooms, type, db = database){
     // console.log(rooms)
     return db('properties')
     .join('occupants', 'properties.occupant_id', 'occupants.id')
     .where('properties.rooms', rooms)
+    .andWhere('properties.bathrooms', bathrooms)
+    .andWhere('properties.type', type)
     .select()
     .then(result => {
         console.log(result)

@@ -10,6 +10,6 @@ exports.seed = function (knex) {
     { id: 7, occupant_id: 27, address: '8 Gracefield Street, Korakonui, Townsville', type: 'house', rooms: 2, bathrooms: 1, garden: false, price: 450, image: 'images/house3.jpg' },
     { id: 8, occupant_id: 28, address: 'Boat Name, Berth 10, Hannan Marina, Clarksville, Townsville', type: 'houseboat', rooms: 1, bathrooms: 1, garden: false, price: 100, image: 'images/houseboat2.jpg' },
     { id: 9, occupant_id: 29, address: '52/23  Moran Lane, Southbridge, Townsville', type: 'apartment', rooms: 3, bathrooms: 1, garden: true, price: 550, image: 'images/apartment3.jpg' },
-    { id: 10, occupant_id: 30, address: '192/6  Ruahine Place, Lumsden, Townsville', type: 'apartment', rooms: 3, bathrooms: 2, garden: false, price: 325, image: 'images/apartment4.jpg' },
+    { id: 10, occupant_id: 30, address: '192/6  Ruahine Place, Lumsden, Townsville', type: 'apartment', rooms: 3, bathrooms: 1, garden: false, price: 325, image: 'images/apartment4.jpg' },
   ]);
 }
