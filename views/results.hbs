@@ -1,10 +1,13 @@
 <h1>Results</h1>
 
 {{#each result}}
-<img src="{{image}}" alt="property image">
+<div class="property">
+<img class="propertyImage" src="{{image}}" alt="property image">
 <h3>Occupant: {{name}}</h3>
 <h3>Address: {{address}}</h3>
 <h3>This property is ${{price}} per week</h3>
 
 <p>This property contains {{rooms}} bedrooms, and {{bathrooms}} bathrooms</p>
+<hr>
+</div>
 {{/each}}
