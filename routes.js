@@ -19,18 +19,24 @@ router.post('/', (req, res) => {
     const rooms = Number(req.body.rooms)
     db.getResults(rooms)
     .then((result) => {
-        console.log(result)
-        res.redirect('/results')
+        const properties = {
+          result: result
+        }
+        router.get('/results', (req, res) => {
+          return res.render('results', properties)
+       })  
+    })
+    .then((result) => {
+      return res.redirect('/results')
     })
     .catch((err) => {
         if (err) {
           res.status(500).send('internal error')
         }
       })
+      // .finally(() => {
+      //   db.close()
+      // })
   })    
 
-//results page
-  router.get('/results', (req, res) => {
-    return res.render('results')
- })
 
