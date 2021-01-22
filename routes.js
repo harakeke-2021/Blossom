@@ -17,7 +17,9 @@ router.get('/', (req, res) => {
 //submit button
 router.post('/', (req, res) => {
     const rooms = Number(req.body.rooms)
-    db.getResults(rooms)
+    const bathrooms = Number(req.body.bathrooms)
+    const type = req.body.type
+    db.getResults(rooms, bathrooms, type)
     .then((result) => {
         const properties = {
           result: result
