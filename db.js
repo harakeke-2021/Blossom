@@ -3,11 +3,12 @@ const config = require('./knexfile')[environment]
 const database = require('knex')(config)
 
 module.exports = {
-    getResults
+    getResults,
+    close
 }
 
 function getResults(rooms, db = database){
-    console.log(rooms)
+    // console.log(rooms)
     return db('properties')
     .join('occupants', 'properties.occupant_id', 'occupants.id')
     .where('properties.rooms', rooms)
@@ -16,4 +17,9 @@ function getResults(rooms, db = database){
         console.log(result)
     return result
     })
+}
+
+
+function close (db = database){
+    db.destroy()
 }
