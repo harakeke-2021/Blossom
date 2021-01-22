@@ -20,7 +20,12 @@ router.post('/', (req, res) => {
     db.getResults(rooms)
     .then((result) => {
         console.log(result)
-        res.redirect('/results')
+        router.get('/results', (req, res) => {
+          return res.render('results', result)
+       })  
+    })
+    .then((result) => {
+      return res.redirect('/results')
     })
     .catch((err) => {
         if (err) {
@@ -29,8 +34,4 @@ router.post('/', (req, res) => {
       })
   })    
 
-//results page
-  router.get('/results', (req, res) => {
-    return res.render('results')
- })
 

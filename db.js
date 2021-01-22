@@ -1,12 +1,12 @@
 const environment = process.env.NODE_ENV || "development"
 const config = require('./knexfile')[environment]
-const db = require('knex')(config)
+const database = require('knex')(config)
 
 module.exports = {
     getResults
 }
 
-function getResults(rooms){
+function getResults(rooms, db = database){
     console.log(rooms)
     return db('properties')
     .join('occupants', 'properties.occupant_id', 'occupants.id')
