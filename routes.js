@@ -6,39 +6,20 @@ module.exports = router
 
 //main page
 router.get('/', (req, res) => {
-    res.render('home')
-      })
-
-//matching results
-router.get('/', (req, res) => {
-    return res.render('results')
- })
+  res.render('home')
+})
 
 //submit button
 router.post('/', (req, res) => {
-    const rooms = Number(req.body.rooms)
-    const bathrooms = Number(req.body.bathrooms)
-    const type = req.body.type
-    db.getResults(rooms, bathrooms, type)
-    .then((result) => {
-        const properties = {
-          result: result
-        }
-        router.get('/results', (req, res) => {
-          return res.render('results', properties)
-       })  
-    })
-    .then((result) => {
-      return res.redirect('/results')
-    })
-    .catch((err) => {
-        if (err) {
-          res.status(500).send('internal error')
-        }
-      })
-      // .finally(() => {
-      //   db.close()
-      // })
-  })    
+  const { type, rooms, bathrooms } = req.body
+  res.redirect(`/results?rooms=${rooms}&type=${type}&bathrooms=${bathrooms}`)
+})
 
-
+//get all property info
+router.get('/results*', (req, res) => {
+  const { type, rooms, bathrooms } = req.query
+  db.getResults(rooms, bathrooms, type)
+    .then(result => {
+      res.render('results', {result: result})
+    })
+  })
